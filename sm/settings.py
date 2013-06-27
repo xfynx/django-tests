@@ -47,18 +47,18 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/var/www/example.com/media/"
-MEDIA_ROOT = ''  # os.path.join(PROJECT_PATH, 'media/')
+MEDIA_ROOT = '' # os.path.join(PROJECT_PATH, 'media/')  # os.path.join(PROJECT_PATH, 'media/')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://example.com/media/", "http://media.example.com/"
-MEDIA_URL = ''
+MEDIA_URL = 'media/'
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
-STATIC_ROOT = ''  # os.path.join(PROJECT_PATH, 'static/')
+STATIC_ROOT = '' # os.path.join(PROJECT_PATH, 'static/'),
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
@@ -66,6 +66,7 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
+    os.path.join(PROJECT_PATH, 'static/'),
     # os.path.join(PROJECT_PATH, 'static/'),
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
@@ -105,7 +106,10 @@ ROOT_URLCONF = 'sm.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'sm.wsgi.application'
 
-TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), '..', 'templates').replace('\\','/'),)
+TEMPLATE_DIRS = (
+    os.path.join(PROJECT_PATH, '..', 'templates').replace('\\', '/'),
+    os.path.join(PROJECT_PATH, '..', 'nm').replace('\\', '/'),
+)
 
 INSTALLED_APPS = (
     'django.contrib.auth',

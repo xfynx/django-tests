@@ -1,11 +1,19 @@
 from django.http import HttpResponse
+from django.template import Context, loader
+import os
 from nm.models import *
 
+PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 
 def index(request):
     latest_poll_list = Poll.objects.order_by('-pub_date')[:5]
-    output = ', '.join([p.question for p in latest_poll_list])
-    return HttpResponse(output)
+    template = loader.get_template('templates/index.html')
+    path_css = os.path.join(PROJECT_PATH, '/css/test.css')
+    context = Context({
+        'latest_poll_list': latest_poll_list,
+        'path_css': path_css
+    })
+    return HttpResponse(template.render(context))
 
 
 def detail(request, poll_id):
