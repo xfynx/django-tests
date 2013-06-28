@@ -1,0 +1,8 @@
+body {
+    width: 600px;
+    /*margin: 40px auto;*/
+    font-family: 'trebuchet MS', 'Lucida sans', Arial;
+    font-size: 12px;
+    color: #444;
+    background: #fff url(back.jpg) 0 0 repeat;
+}

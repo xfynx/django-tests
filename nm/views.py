@@ -8,10 +8,10 @@ PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 def index(request):
     latest_poll_list = Poll.objects.order_by('-pub_date')[:5]
     template = loader.get_template('templates/index.html')
-    path_css = os.path.join(PROJECT_PATH, '/css/test.css')
+    # path_css = os.path.join(PROJECT_PATH, '/css/test.css')
     context = Context({
         'latest_poll_list': latest_poll_list,
-        'path_css': path_css
+        # 'path_css': path_css
     })
     return HttpResponse(template.render(context))
 
