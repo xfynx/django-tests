@@ -4,12 +4,12 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'sm.views.home', name='home'),
-    # url(r'^sm/', include('sm.foo.urls')),
+                       # Examples:
+                       # url(r'^$', 'sm.views.home', name='home'),
+                       # url(r'^sm/', include('sm.foo.urls')),
 
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-    url(r'^polls/', include('nm.urls')),
-    url(r'^admin/', include(admin.site.urls)),
+                       # Uncomment the admin/doc line below to enable admin documentation:
+                       # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+                       url(r'^polls/', include('nm.urls', namespace="nm")),
+                       url(r'^admin/', include(admin.site.urls)),
 )
