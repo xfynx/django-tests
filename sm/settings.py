@@ -110,6 +110,7 @@ WSGI_APPLICATION = 'sm.wsgi.application'
 TEMPLATE_DIRS = (
     os.path.join(PROJECT_PATH, '..', 'templates').replace('\\', '/'),
     os.path.join(PROJECT_PATH, '..', 'nm').replace('\\', '/'),
+    os.path.join(PROJECT_PATH, '..', 'simplereg').replace('\\', '/'),
 )
 
 INSTALLED_APPS = (
@@ -124,6 +125,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'nm',
+    'simplereg'
 )
 
 # A sample logging configuration. The only tangible logging

@@ -8,22 +8,16 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     {% load staticfiles %}
     <link rel="stylesheet" type="text/css" href="{% static "css/test.css" %}"/>
-    <title>polls</title>
+    <title>Home</title>
 </head>
 <body>
+
 <form method="post" style="width: 250px;">
     {{ username }}
     <input type="submit" name="exit" value="Выход"/>
 </form>
-{% if latest_poll_list %}
-    <ul>
-        {% for poll in latest_poll_list %}
-            <li><a href="{% url 'nm:detail' poll.id %}">{{ poll.question }}</a></li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>No polls are available.</p>
-{% endif %}
+
+<a href="/polls">polls</a>
 
 </body>
 </html>
