@@ -4,6 +4,7 @@
     <title></title>
 </head>
 <body>
+{% include "loginfo.html" %}
 <h1>{{ poll.question }}</h1>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}

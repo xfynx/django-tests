@@ -29,12 +29,3 @@ def registration(request, template_name='registration.html',
     }
     context.update(extra_context or {})
     return TemplateResponse(request, template_name, context)
-
-
-    # def login(request, template_name, form_class=RegForm):
-    #     form = form_class(request.POST or None)
-    #     user = form.save()
-    #     # email = form.cleaned_data['email']
-    #     # password = form.cleaned_data['password']
-    #     #user = authenticate(email=email, password=password)
-    #     login(request, user)

@@ -15,10 +15,14 @@ urlpatterns = patterns('',
                        # # the 'name' value as called by the {% url %} template tag
                        # url(r'^(?P<poll_id>\d+)/$', views.detail, name='detail'),
 
+                       url(r'^loginfo/$', 'nm.views.user_login', {
+                           'template_name': 'templates/loginfo.html',
+                       }, name='loginfo'),
+
                        url(r'^registration/$', 'simplereg.views.registration', {
                            'template_name': 'templates/registration.html',
                            #'redirect_field_name': '',
-                           'autologin': True,
+                           'autologin': False,
                            'callback': None
                        }, name='registration'),
                        url(r'^login/$', 'django.contrib.auth.views.login', {

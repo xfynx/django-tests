@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, logout
+from django.shortcuts import redirect
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
@@ -7,7 +8,7 @@ from django import forms
 
 
 class RegForm(forms.Form):
-    email = forms.EmailField(widget=forms.TextInput(attrs={'maxlength': 75}), label=_('Email'))
+    email = forms.EmailField(widget=forms.TextInput(attrs={'maxlength': 75}), label=_('Email/login'))
     password = forms.CharField(widget=forms.PasswordInput(render_value=False), label=_('Password'))
 
     def clean_email(self):
@@ -23,9 +24,19 @@ class RegForm(forms.Form):
         user = User.objects.create_user(login, email, password)
         user.is_staff = False
         user.save()
-        user = authenticate(login=login, email=user.email, passsword=user.password)
+        user = authenticate(login=login, email=email, password=password)
         return user
 
 
 class LoginForm(AuthenticationForm):
-    username = forms.CharField(label=_('Email'), max_length=75)
+    username = forms.CharField(label=_('Email/login'), max_length=75)
+
+
+def log_out(request):
+    logout(request)
+    # redirect_to = request.REQUEST.get(redirect_field_name, '')
+    # if redirect_to:
+    #     netloc = urlparse.urlparse(redirect_to)[1]
+    #     # Security check -- don't allow redirection to a different host.
+    #     if not (netloc and netloc != request.get_host()):
+    return redirect('/polls/home')

@@ -11,10 +11,7 @@
     <title>polls</title>
 </head>
 <body>
-<form method="post" style="width: 250px;">
-    {{ username }}
-    <input type="submit" name="exit" value="Выход"/>
-</form>
+{% include "loginfo.html" %}
 {% if latest_poll_list %}
     <ul>
         {% for poll in latest_poll_list %}
